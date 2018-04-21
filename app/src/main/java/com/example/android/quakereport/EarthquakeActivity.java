@@ -80,7 +80,12 @@ public class EarthquakeActivity extends AppCompatActivity {
 
         @Override
         protected List<Earthquake> doInBackground(String... urls) {
-            return null;
+            if (urls.length < 1 || urls[0] == null) {
+                return null;
+            }
+
+            List<Earthquake> result = QueryUtils.fetchEarthquakeData(urls[0]);
+            return result;
         }
 
         @Override
