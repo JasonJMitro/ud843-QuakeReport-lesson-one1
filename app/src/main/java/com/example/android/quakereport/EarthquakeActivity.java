@@ -43,6 +43,9 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.i(LOG_TAG, "TEST: EarthquakeActivity onCreate() called");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
@@ -77,6 +80,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
         });
 
         LoaderManager loaderManager = getLoaderManager();
+
+        Log.i(LOG_TAG, "TEST: initLoader() called");
         loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
 
 
@@ -84,11 +89,13 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 
     @Override
     public Loader<List<Earthquake>> onCreateLoader(int i, Bundle bundle) {
+        Log.i(LOG_TAG, "TEST: onCreateLoader() called");
         return new EarthquakeLoader(this, USGS_REQUEST_URL);
     }
 
     @Override
     public void onLoadFinished(Loader<List<Earthquake>> loader, List<Earthquake> earthquakes) {
+        Log.i(LOG_TAG, "TEST: onLoadFinished() called");
         mAdapter.clear();
         if (earthquakes != null && !earthquakes.isEmpty()) {
             mAdapter.addAll(earthquakes);
@@ -97,6 +104,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
 
     @Override
     public void onLoaderReset(Loader<List<Earthquake>> loader) {
+        Log.i(LOG_TAG, "TEST: onLoaderReset() called");
         mAdapter.clear();
         }
 
