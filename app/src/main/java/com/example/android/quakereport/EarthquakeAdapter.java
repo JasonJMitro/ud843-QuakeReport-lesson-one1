@@ -104,7 +104,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
             // the first String will be "5km N" and the second String will be "Cairo, Egypt".
             String[] parts = originalLocation.split(LOCATION_SEPARATOR);
             // Location offset should be "5km N " + " of " --> "5km N of"
-            locationOffset = parts[0] + LOCATION_SEPARATOR;
+            locationOffset = getContext().getString(R.string.near_the);
             // Primary location should be "Cairo, Egypt"
             primaryLocation = parts[1];
         } else {
